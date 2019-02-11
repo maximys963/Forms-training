@@ -1,7 +1,9 @@
 import { createStore, combineReducers, compose } from 'redux';
+import {registration} from "../reducer/mainReducer";
 import { reducer as formReducer } from 'redux-form';
 
 const rootReducer = combineReducers({
+    registration,
     form: formReducer
 });
 

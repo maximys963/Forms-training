@@ -1,8 +1,11 @@
-export const rootReducer = (state = {}, action) => {
+import {SUBMIT_USER} from "../actions/actions";
+
+export const registration = (state = {}, action) => {
     switch (action.type){
-        case 'LOREM' :
+        case SUBMIT_USER :
             return{
-                state
+                ...state,
+                userInformation: action.user_info
             };
         default : return state
     }

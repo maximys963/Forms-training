@@ -1,3 +1,21 @@
 .App {
-  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.reg-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  background-color: #fffbf8;
+  -webkit-box-shadow: 6px 7px 37px -10px rgba(36,36,36,1);
+  -moz-box-shadow: 6px 7px 37px -10px rgba(36,36,36,1);
+  box-shadow: 6px 7px 37px -10px rgba(36,36,36,1);
+  height: 100%;
+  padding-bottom: 40px;
+}
+.reg-limiter{
+  width: 80%;
 }
