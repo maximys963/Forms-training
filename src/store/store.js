@@ -7,7 +7,7 @@ const rootReducer = combineReducers({
     form: formReducer
 });
 
-const initialState = {};
+const initialState = { registration : {gender: "Male"} };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -16,3 +16,4 @@ export const store = createStore(
     initialState,
     composeEnhancers()
 );
+

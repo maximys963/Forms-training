@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Field, reduxForm} from 'redux-form';
-import { Image, Input, Select, Button } from 'semantic-ui-react';
+import { Image, Button } from 'semantic-ui-react';
 import { customInput} from "../customInput/customInput";
+import { connect } from 'react-redux';
 import {validate} from "../validation/validation";
+import * as actions from '../../actionCreators/actionCreators'
 import './register.css';
 
 
@@ -11,11 +13,13 @@ class RegisterForms extends Component{
         super(props);
     }
     render(){
-        const { handleSubmit } = this.props;
+        const { handleSubmit, gender } = this.props;
         return(
             <form className='form-container' onSubmit={handleSubmit}>
                 <div className='first-block'>
-                    <Image src={require('../.././assets/john.jpg')}/>
+                    <Image src={gender ==='Male'
+                        ? require('../.././assets/john.jpg')
+                         : require('../.././assets/anna.jpg')}/>
                     <div className='right-input-container'>
 
                         <Field name='firstname'
@@ -43,6 +47,7 @@ class RegisterForms extends Component{
                 <div>
                     <label>Gender</label>
                     <Field name='gender'
+                           onChange={e => this.props.chooseGender(e.target.value)}
                            className='input-element'
                            component='select'>
                         <option>Male</option>
@@ -74,4 +79,10 @@ RegisterForms = reduxForm({
     validate
 })(RegisterForms);
 
-export default RegisterForms;
+const mapStateToProps = (state) => ({
+    gender: state.registration.gender
+});
+
+
+export default connect(mapStateToProps, actions)(RegisterForms);
+

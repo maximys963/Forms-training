@@ -7,7 +7,7 @@ export const customInput = props => {
     const { label, input, type, meta } = props;
     return(
         <div className='custom-inp-container'>
-        <div className='custom-inp' >
+        <div className='custom-inp'>
             <label>{label}</label>
             <Input className='input-element'
                    error = {meta.error && meta.touched}

@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import RegisterForms from './components/register/register'
+import CardRegistration from './components/cardRegistration/cardRegistration';
 import Steps from './components/steps/steps'
 import * as actions from './actionCreators/actionCreators'
+
 
 class App extends Component {
   submit = values => {
     console.log('here');
-   // let info = (JSON.stringify(values, null, 4));
     this.props.addUser(values);
   };
   render() {
@@ -16,8 +18,13 @@ class App extends Component {
       <div className='App'>
         <div className='reg-container'>
           <div className='reg-limiter'>
-              <Steps/>
-        <RegisterForms onSubmit={this.submit}/>
+              <Router>
+                  <div>
+                  <Steps/>
+                      <Route path='/step1' render={() => <RegisterForms onSubmit={this.submit}/>}/>
+                      <Route path='/step2' render={() => <CardRegistration/>}/>
+                  </div>
+              </Router>
           </div>
         </div>
       </div>
